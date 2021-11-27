@@ -6,7 +6,7 @@
 }
 .texts {
     width: 100%;
-    
+    max-height: 580px;
     overflow: auto;
 }
 .texts p{

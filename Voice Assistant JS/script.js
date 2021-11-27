@@ -1,9 +1,10 @@
 const texts = document.querySelector(".texts");
 const btn = document.querySelector(".microphone_btn");
-const now_speaking = document.querySelector(".now_speak")
+const now_speaking = document.querySelector(".now_speak");
 
 let text;
 const apps = ["facebook","youtube","instagram","twitter", "gmail"]
+const txts = JSON.parse(localStorage.getItem('text')) || [];
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -41,16 +42,19 @@ recognition.addEventListener("result",e => {
 })
 
 
+
+
 recognition.onend = () =>{
     now_speaking.innerHTML = "";
     if(text.length > 0){
+        txts.push(text);
+        localStorage.setItem('text', JSON.stringify(txts));
         const p = document.createElement("p")
         p.innerHTML = text;
-        texts.append(p);
-        text = "";
+        texts.appendChild(p)
+        
+        
     }
-
-
     
     if(text.toLowerCase().includes("open")){
         const strSearch = text.replace("open","");
@@ -83,7 +87,23 @@ recognition.onend = () =>{
         console.log(pastTxt)
     }
 
+    const scrollHeight = texts.scrollHeight;
+    texts.scrollTop = scrollHeight;
+    text = "";
 }
-const scrollHeight = texts.scrollHeight;
-texts.scrollTop = scrollHeight;
 
+function insertAll(){
+    for (let i = 0; i < txts.length; i++) {
+        const p = document.createElement("p")
+        p.innerHTML = txts[i];
+        texts.appendChild(p)
+    }
+}
+
+
+window.addEventListener("reload",()=>{
+    const scrollHeight = texts.scrollHeight;
+    texts.scrollTop = scrollHeight;
+})
+
+insertAll()
