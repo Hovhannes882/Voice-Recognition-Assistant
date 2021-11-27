@@ -1,0 +1,45 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    height: 80%;
+}
+.texts {
+    width: 100%;
+    
+    overflow: auto;
+}
+.texts p{
+    background-color: lightgray;
+    width: auto;
+    max-width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+    
+    margin: 10px auto;
+}
+.footer {
+    
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    border-top: 1px solid lightgray;
+}
+.microphone_btn {
+    padding: 20px;
+    margin: 10px auto;
+    width: 40px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 2rem;
+    
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+.fas {
+}
+.fa-microphone {
+}
